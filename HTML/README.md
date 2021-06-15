@@ -38,7 +38,7 @@
 
 ### * Estrutura básica de um documento HTML: 
   + Um documento HTML é dividido em 2 principais seções: 
-    + head: O <head> de um documento HTML é a parte que não é exibida no navegador da Web quando a página é carregada. Nele, ficam informações valiosas, como as tags meta e a tag <title>, que vão ser faladas mais à frente.
+    + head: O `<head>` de um documento HTML é a parte que não é exibida no navegador da Web quando a página é carregada. Nele, ficam informações valiosas, como as tags meta e a tag `<title>`, que vão ser faladas mais à frente.
     + body: O <body> é o lugar onde tudo que for visível ao usuário irá aparecer. Nele, estão contidas uma infinidade de tags diferentes que permitem infinitas combinações.
   + Estrutura HTML: 
     + Todo documento HTML segue a seguinte estrutura: 
@@ -167,3 +167,130 @@ funcionar como uma árvore que tem os troncos embaixo da terra e as folhas no ca
   
   + Esses quatro atributos são globais, isso significa que podem ser colocados em qualquer tag. Existem diversos outros atributos que têm funcionalidades em outras áreas, 
   como nas tabelas - em seus campos - botões, imagens e vídeos, mas veremos eles conforme formos avançando no conteúdo.
+
+ 
+## 2° dia - Como trabalhar com links em HTML / Trabalhando com imagens, vídeos e audios / Trabalhando com tabelas / Trabalhando com formulários:
+ 
+### * Como trabalhar com links em HTML: 
++ Os links são o coração do HTML, eles que são os responsáveis pela navegação na internet, tanto em outras páginas, quanto na própria página, sendo assim, é importantíssimo 
+ saber trabalhar com links. Portanto, vamos começar a falar deles agora.
+
+ + Tag `<a>`: 
+  + Essa é a tag utilizada para colocar links dentro da página HTML. É uma tag que precisa de fechamento, portanto o conteúdo dela deve ficar entre `<a>` e `</a>`.
+  + A tag `<a>` é uma simplificação para "anchor", que significa âncora. Então ela serve para ancorar um conteúdo à página.
+  + **Atributos:**
+   + href: o atributo principal da tag âncora é o "href", que indica para onde aquele link deverá levar a pessoa que clicar nele. Ele é um atributo que recebe um argumento (como vimos anteriormente, atributos podem ou não receber argumentos, que são inseridos na forma (atributo = argumento)). O href recebe como argumento o link para qual a pessoa será levada, podendo ser uma URL (link de algum site usando o protocolo http / https) ou para endereços dentro do próprio domínio.
+   + download: o atributo download, diferente do href, pode ou não receber argumentos, sendo assim, é um atributo auto-suficiente ou booleano. Ele é utilizado em conjunto com o href, mas tem a função primordial de, no lugar de fazer o usuário navegar por entre os links, tem a função de baixar o que o href está indicando. Sendo assim, ele que é usado quando se quer colocar algum arquivo para download dentro da sua aplicação. Assim que o usuário clicar no link que o href está levando, ele irá baixar o arquivo com o nome que for colocado nele. Para isso serve o argumento no download. O valor recebido será o nome do arquivo quando o usuário clicar para baixar. `<a href='./foto-de-cachorro.png' download="cachorro">Baixe a foto do cachorro</a>`. No caso do exemplo anterior, o arquivo, caso não se tivesse passado um argumento para "download", seria baixado com o nome 'foto-de-cachorro.png', mas como teve o valor modificado, será baixado com o nome 'cachorro.png'. E o link será exibido com o texto "Baixe a foto do cachorro".
+
+
+![Foto de exemplo do texto anterior](./assets/exemplo-link-cachorro.png)
+   
+![Foto de exemplo do resultado do link](./assets/exemplo-link-cachorro-resultado.png)
+   
+![Foto de exemplo do download](./assets/download-cachorro-exemplo.png)
+
+  + Você deve ter ficado se perguntando sobre o que é esse ./ na frente do arquivo, já que eu disse que os href recebem links. Pois bem, esse ./foto-do-cachorro.png é sim um link, contudo, é um link interno do seu projeto, não é um link da web. Os links recebidos, como eu falei mais em cima, podem ser tanto de pastas dentro do próprio projeto, como links da web. Vamos falar um pouco mais sobre navegação dentro da própria pasta do projeto.
+    + Um projeto, como vocês devem imaginar, é feito dentro de uma pasta (directory). Nele, estão contidos todos os arquivos que constituem o site. Esse projeto, por exemplo, no momento que eu estou fazendo, está composto da seguinte forma:
+    ![Imagem da pasta](./assets/pasta-exemplo.png)
+    + Dentro da pasta-mãe JAVASCRIPT ES6, que é o nome dado para o projeto, existe uma pasta HTML, CSS e outras. Dentro da pasta HTML, tem uma pasta assets, que tem algumas imagens dentro dela, e mais dois arquivos: o index.html e o README. Para navegar dentro da pasta, são usados os pontos e as barras.
+    
+    + Por exemplo, para colocar as imagens do cachorro mais àcima, eu precisei usar o ./ (indica que se está procurando uma pasta dentro da pasta que já se está, que no caso é a pasta HTML, já que eu estou editando o arquivo README). Em seguida, eu uso o assets, para indicar que eu quero entrar na pasta assets. Ficando ./assets. Por fim, dentro da pasta assets, eu devo escolher um arquivo para mostrar. Sendo assim, vamos usar como exemplo a "exemplo-link-cachorro.png". Note que é necessário sempre colocar o tipo do arquivo (.png, .jpg, etc). No fim, então temos a estrutura `./assets/exemplo-link-cachorro.png`, que irá selecionar a imagem que eu desejo.
+    
+    + Pode parecer um pouco estranho de início, mas é rápido de acostumar. Agora vamos supor que eu estivesse na pasta "tipos de dados", mas quisesse pegar a mesma imagem "exemplo-link-cachorro.png". Usando o ./ eu só conseguiria navegar dentro da pasta "tipos de dados". Para sair dela, então, eu preciso voltar uma pasta, para isso, usa-se o ../
+    
+    + Viu como é simples? Depois do ../ deve-se usar o caminho para chegar até a imagem, então o caminho completo ficaria: `../HTML/assets/exemplo-link-cachorro.png`.
+
++ Atributo target: 
+    + O atributo target é o responsável, como o nome sugere, de indicar o alvo do link. Ele é um atributo que aceita valores, e os valores que ele aceita são, principalmente, "_blank" e "_self".
+    
+    + O target = "_blank" terá o comportamento de, quando o usuário clicar no link, ele irá abrir o link em uma próxima página, é ideal para quando se está referenciando links de outras páginas, redes sociais e etc. Para, quando a pessoa clicar, abrir o link em uma outra aba, não retirando a sua página das abertas.
+
+    + O target = "_self" tem o comportamento contrário ao _blank. Quando ele é utilizado, ao usuário clicar no link, ele redireciona, dentro da mesma janela, o usuário para o link clicado. É o ideal para navegações dentro do próprio site.
+
++ Esses são os principais atributos da tag `<a>`, e os que você deve prestar mais atenção para não acabar confundindo ou realizando uma ação indesejada dentro da sua aplicação.
+
+
+### * Trabalhando com imagens, vídeos e áudios: 
+
+#### -> **IMAGENS**: 
++ A tag `<figure>`: 
+  
+  + É uma tag que tem um valor puramente semântico. Ela não vai, de fato, colocar uma figura ou algo assim, mas serve para indicar que, aquilo que está dentro dela (a tag img e figcaption) são uma figura. A tag `<figure>` engloba as tags que forem ser colocadas para, de fato, colocar a iamgem no site ou descrevê-la.
+
++ A tag `<img>`: 
+  
+  + É uma tag que não necessita ser fechada, pois seu conteúdo não é colocado entre a abertura e fechamento da tag, mas sim em um atributo.
+
+  + Atributos da tag `<img>`: 
+    
+    + src: 
+      
+      + O atributo src é o coração da tag image, é nele que você vai colocar o endereço para chegar na imagem, ele recebe argumentos de maneira semelhante ao href, podendo ser links externos (da web), ou internos, dentro do seu diretório (pasta) seguindo aquele modelo que foi citado anteriormente.
+    
+    + alt: 
+      + O atributo alt também é um atributo que recebe argumentos. A pricipal funcionalidade dele é a acessibilidade. Para pessoas que não podem ver as imagens, o "alt" serve como uma descrição curta para elas. Sendo assim, tendo um papel importantíssimo na acessibilidade do seu site. Caso o site também não consiga carregar a imagem, o que será mostrado é o texto do "alt", como no modelo:   
+      ![Logomarca do site]()
+
++ A tag `<figcaption>`:
+  
+  + Ao contrário da tag `<img>`, a tag figcaption precisa ser fechada, pois o conteúdo dela vem entre as tags. O figcaption serve para você descrever a sua imagem, colocar uma descrição mais longa sobre o que se trata a imagem.
+
++ Quando se está tratando com imagens no HTML, é sempre bom estar atento a algumas coisas. Quando você for colocar uma imagem no site, é de suma importância que ela não tenha direitos autorais, ou que os direitos autorais dela pertençam a você. É completamente indesejado que seu site saia do ar por problema de direitos autorais por conta de uma imagem que você colocou lá, não é? 
+
++ Também é importante ressaltar que as imagens, assim como todas as tags HTML, também recebem os atributos globais, que foram aqueles que a gente citou na aula passada: class, id, name, title, etc. No caso, esses atributos não terão função semântica na imagem, mas terão uma função muito importante de fazer o HTML ser identificado pelas outras linguagens. (Javascript, CSS, o backend). 
+
++ Por fim, é bom lembrar que imagens podem, por vezes, ser bem pesadas e fazer o site ficar lento para quem estiver usando, pois ela tanto vai demorar para baixar e ser exibida, quanto pode acabar afetando a performance de um navegador em um computador mais fraco, então é sempre bom ter cuidado com o peso das imagens que se está colocando na aplicação.
+
+#### ->  **ÁUDIOS:**
+  
+  + A tag `<audio>`: 
+    
+    + Como o nome já sugere, esta tag serve para reproduzirmos uma mídia de áudio. A tag audio, diferente da tag `<img>`, precisa ser fechada. `<audio>` pode receber diversos atributos e vamos ver eles agora.
+    + **Atributos**:
+    
+      + src: 
+        + Assim como na tag `<img>`, o conteúdo do áudio é buscado por meio da tag src, onde você vai especificar o caminho que deverá ser seguido para acessar o seu áudio.
+        `<audio src="./assets/audio/musica.mp3" autoplay> </audio>`
+        
+      + autoplay: 
+        + Faz que o áudio comece a tocar assim que for baixado pelo navegador do usuário. É um atributo booleano ou auto-suficiente, o que significa que ele não recebe argumentos, é colocado sozinho.
+        `<audio src="" autoplay> </audio>` 
+      
+      + controls: 
+        + Faz surgirem no player de áudio, controles. Sendo assim, o usuário pode pausar, despausar, aumentar o volume e avançar. O atributo controls também é um atributo booleano.
+      `<audio src="" controls> </audio>`
+    
+      + loop: 
+        + Faz com que o áudio fique tocando em looping, ou seja, sempre que o áudio chegar ao fim, voltará para o começo. Também é um atributo booleano.
+        `<audio src="" loop> </audio>`
+
+      + muted: 
+        + Faz com que o áudio tenha seu estado natural como mutado, então quando o usuário carregar a página e o áudio for devidamente carregado, ele não irá tocar de cara. O usuário irá precisar desmutar o áudio para ele começar a tocar. Também é um atributo booleano. 
+      
+    + Um player de áudio com "control" tem o seguinte formato:
+    ![Imagem do player de áudio](https://www.devmedia.com.br/arquivos/artigos/26018/figura1.png)
+
+#### **VÍDEOS:**
+
++ A tag `<video>`: 
+    
+    + Como o nome já sugere, esta tag serve para reproduzirmos uma mídia de vídeo. A tag video, diferente da tag `<img>`, precisa ser fechada. `<video>` pode receber diversos atributos e vamos ver eles agora.
+
+    + **Atributos:**
+      + src:
+        + Assim como para áudios, recebe como argumento o caminho para chegar até o vídeo, podendo ser um link da web ou do próprio diretório (pasta do projeto). 
+    
+      + controls: 
+        + Assim como no `<audio>`, a tag recebe o controls, que é um atributo booleano que faz com que os controles sejam mostrados para o usuário. 
+
+      + autoplay: 
+        + Assim como para áudios, esse atributo faz com que o vídeo comece a ser reproduzido assim que estiver pronto (devidamente carregado). É um atributo booleano.
+
+      + loop:
+        + Assim como para áudios, faz com que o vídeo, assim que chegar ao seu final, voltar desde o início e tocar novamente. É um atributo booleano.
+
+      + poster:
+        + O atributo poster recebe como argumento um link (da internet ou do próprio diretório) de uma imagem para ser exibida antes do vídeo começar a ser exibido (assim como no youtube com as thumbnails). A imagem colocada será retirada assim que o vídeo começar a ser reproduzido.
+
+    + Assim como para imagens, é importante saber que usar essas tags sem restrição alguma pode interferir no desempenho da aplicação em alguns dispositivos. Além disso, é bom você dar uma olhada sobre quais navegadores aceitam quais tipos de arquivo. Existem navegadores que, por exemplo, não aceitam vídeos com a extensão .mp4, mas aceitam com a extensão .webm e .ogg. Nada que uns minutinhos de pesquisa não resolvam!
+
