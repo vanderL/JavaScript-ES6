@@ -294,3 +294,218 @@ funcionar como uma árvore que tem os troncos embaixo da terra e as folhas no ca
 
     + Assim como para imagens, é importante saber que usar essas tags sem restrição alguma pode interferir no desempenho da aplicação em alguns dispositivos. Além disso, é bom você dar uma olhada sobre quais navegadores aceitam quais tipos de arquivo. Existem navegadores que, por exemplo, não aceitam vídeos com a extensão .mp4, mas aceitam com a extensão .webm e .ogg. Nada que uns minutinhos de pesquisa não resolvam!
 
+### * Como trabalhar com tabelas em HTML: 
+
++ Agora estamos chegando em uma parte **IMPORTANTÍSSIMA** do HTML. Não que as anteriores não fossem, mas as tabelas, assim como os formulários, que são o próximo tópico, são extremamente importantes.
+
++ As tabelas são uma das principais formas de se mostrar dados obtidos, processados ou não pelo Javascript ou outras linguagens de programação. Sendo assim, é de fundamental importância aprender a dominar as tabelas com maestria.
+
++ Existem algumas formas de construir tabelas em HTML, aqui, vou ensinar uma delas, a mais intuitiva.
+
++ Tabelas não são assim tão difíceis de operar, mas no começo pode parecer um pouco confuso.
+
++ Primeiramente, vamos re-lembrar como funciona uma tabela. Tabelas são compostas de linhas e colunas, confome o exemplo abaixo: 
+
+![Imagem de tabela em branco](https://static.escolakids.uol.com.br/image/titulo-da-tabela.JPG)
+
++ No HTML não vai ser diferente disso, mas a gente vai ter que aprender a fazer isso em formato de código, certo?
+
++ **Estrutura de uma tabela:**
+  + As tabelas, assim como os demais elementos no HTML, possuem uma tag. A tag da vez é a: 
+    `<table>`: ela irá englobar a tabela (o conteúdo da tabela deverá ser colocado dentro dela), conforme o tópico a seguir.
+
+  + **Cabeçalho e corpo:**
+    + As tabelas em HTML são dividias em cabeçalho e corpo, assim como o documento HTML em si. As tags para representar essas partes são: 
+      `<thead>`: tag para marcar o cabeçalho da tabela, nele, deverão estar contidos os títulos de cada coluna.
+      `<tbody>`: tag para marcar o corpo da tabela, nele, devem estar os conteúdos da tabela de acordo com cada título.
+
+    + Cabeçalho (`<thead>`): 
+      + Dentro do `<thead>`, a gente deve criar uma linha e N colunas, conforme for necessário. 
+      + Para isso, a gente deve usar as tags `<tr>` e `<th>`. 
+        + `<tr>`: acrônimo para "table row", ou 'linha da tabela', indica a criação de uma linha.  
+        + `<th>`: acrônimo para "table header", ou 'cabeçalho da tabela', indica a criação de uma célula-cabeçalho, ou título da coluna.
+        + Isso vai ficar mais nítido quando a gente for ver na prática como funciona.
+
+    + Corpo (`<tbody>`):
+      + Dentro do `<tbody>` a estrutura é bastante parecida, mas no lugar de usar o `<th>`, a gente vai usar o `<td>`.
+      + Da mesma forma que no cabeçalho, o `<tr>` servirá para criar novas linhas.
+      + De maneira semelhante ao `<th>`, funciona o `<td>`.
+
+      + Vamos ver um exemplo real de uma tabela que tudo vai ficar mais simples: 
+
+
+        ~~~html 
+          <table>
+              <thead>
+                  <tr>
+                      <th>Nome</th>
+                      <th>Email</th>
+                      <th>CPF</th>
+                  </tr>
+              </thead>
+
+              <tbody>
+                  <tr>
+                      <td>João</td>
+                      <td>joão@email.com</td>
+                      <td>123.456.678.90</td>
+                  </tr>
+
+                  <tr>
+                      <td>Maria</td>
+                      <td>maria@email.com</td>
+                      <td>098.765.432.10</td>
+                  </tr>
+                  <tr>
+                      <td>Cléber</td>
+                      <td>cleber@email.com</td>
+                      <td>234.234.234.23</td>
+                  </tr>
+              </tbody>
+          </table>
+        ~~~
+     
+      + Essa tabela ficaria da seguinte forma: 
+
+<table align="center">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>CPF</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>João</td>
+            <td>joão@email.com</td>
+            <td>123.456.678.90</td>
+        </tr>
+        <tr>
+            <td>Maria</td>
+            <td>maria@email.com</td>
+            <td>098.765.432.10</td>
+        </tr>
+        <tr>
+            <td>Cléber</td>
+            <td>cleber@email.com</td>
+            <td>234.234.234.23</td>
+        </tr>
+    </tbody>
+</table>
+
+        -> É muito importante praticar! Faça uma tabela qualquer também!
+
++ Um pouco além de linhas e colunas: 
+    + E se a gente tivesse um só título para duas informações para ele? Por exemplo, se uma pessoa tem mais de um telefone, como a gente faria? Só colocando o tr e td, não caberia. Para isso, existem os atributos das tabelas. 
+    
+    + rowspan: o rowspan informa quantas linhas uma informação irá ocupar.
+
+    + colspan: o colspan informa quantas colunas uma informação irá ocupar.
+
+    + Eles são usados da seguinte maneira: 
+        + ~~~html
+            <table>
+                <thead>
+                <tr>
+                    <th>Primeiro Nome:</th>
+                    <th> rowspan="2">Telefone:</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td>Ted</td>
+                    <td>8888-8888</td>
+                    <td>9999-9999</td>
+                </tr>
+                <tr>
+                    <td>Junior</td>
+                    <td>1111-1111</td>
+                    <td>2222-2222</td>
+                </tr>
+            </table>
+          ~~~
+    + O rowspan 'fala' pro navegador que a tabela deve ocupar 2 linhas, sendo assim, na linha de baixo não é passado  mais um cabeçalho, é passada mais uma informação do mesmo cabeçalho. Essa tabela fica assim:
+
+<table border="3" align="center">
+    <tr>
+        <th>Nome</th>
+        <th colspan="2">Telefones</th>
+    </tr>
+    <br>
+    <tr>
+        <td>Ted</td>
+        <td>8888-8888</td>
+        <td>9999-9999</td>
+    </tr>
+    <br>
+    <tr>
+        <td>Junior</td>
+        <td>1111-1111</td>
+        <td>2222-2222</td>
+    </tr>
+<table>
+
+  + Só para fins informativos, também existe o `<tfoot>`, que serve para o rodapé da tabela. Ele funciona da mesma forma que os outros, não tem nenhuma tag especial relacionada a ele.
+
+
+### * Como trabalhar com formulários em HTML: 
+
++ Se eu fosse eleger o tópico mais importante no HTML, certamente seria a parte de formulários. São eles que permitem a comunicação de dados entre o usuário tanto com o front-end (parte da interface), quanto o back-end (parte do servidor).
+
++ O que é um formulário? 
+    + Você já deve ter se deparado com um monte de formulários pela frente. O formato mais conhecido deles é: 
+
+<img src="https://i0.wp.com/www.cupcom.com.br/wp-content/uploads/2020/03/componente-login.jpg?resize=1024%2C576&ssl=1"></img>
+
+  + Sim, o login em páginas, a criação de contas, a coletânea de feedback de um produto, e até os comentários de algumas plataformas são feitos por meio de formulários.
+
++ Os formulários são feitos com HTML e têm diversas funcionalidades e tags diferentes para eles. É um tópico bastante longo, então é bom <u>manter o foco.</u>
+
++ Um formulário deve ser envolvido entre as tags `<form>` e `</form>`.
+
++ O coração dos formulários são os campos de preenchimento (inputs), mas antes de falar deles, a gente deve prestar atenção em alguns fatores de acessibilidade para o nosso formulário.
+
++ Tags `<legend>` e `<fieldset>`:
+    + O elemento `<fieldset>` é uma maneira conveniente de criar grupos que compartilham o mesmo propósito. O elemento `<legend>` descreve formalmente a finalidade do elemento `<fieldset>` ao qual está incluído.
+
+            
+~~~html
+            
+<form>
+  <fieldset>
+    <legend>Fruit juice size</legend>
+    <p>
+       (campos de input)
+    </p>
+    <p>
+      (campos de input)
+    </p>
+    <p>
+       (campos de input)
+    </p>
+  </fieldset>
+</form>
+            
+~~~
+  + Isso, ao ser mandado para um navegador, ficaria da seguinte forma: 
+
+<form>
+  <fieldset>
+    <legend>legenda do formulário</legend>
+    <p>
+       (campos de input)
+    </p>
+    <p>
+      (campos de input)
+    </p>
+    <p>
+       (campos de input)
+    </p>
+  </fieldset>
+</form>
+
++ Perceba que o legend completa o fieldset. Entenda o fieldset como sendo essa 'bordinha' de fora e o legend como sendo o conteúdo "legenda do formulário".
+
++ `<label for="">`: eu coloquei o atributo direto, porque sempre que você for usar um lable, ele estará acompanhado de um for. O for recebe o id do campo que se deseja atribuir o label. O label nada mais é que o título de cada campo (input). Também é uma questão de acessibilidade e é uma excelente prática utilizar os lables para todos os inputs.
+
++ `<input>`: até que enfim, chegamos no coração dos formulários, a tag que recebe os dados do usuário e permite uma infinidade de coisas serem feitas baseadas nisso.
