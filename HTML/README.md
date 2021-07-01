@@ -508,4 +508,237 @@ funcionar como uma árvore que tem os troncos embaixo da terra e as folhas no ca
 
 + `<label for="">`: eu coloquei o atributo direto, porque sempre que você for usar um lable, ele estará acompanhado de um for. O for recebe o id do campo que se deseja atribuir o label. O label nada mais é que o título de cada campo (input). Também é uma questão de acessibilidade e é uma excelente prática utilizar os lables para todos os inputs.
 
-+ `<input>`: até que enfim, chegamos no coração dos formulários, a tag que recebe os dados do usuário e permite uma infinidade de coisas serem feitas baseadas nisso.
++ `<input>`: até que enfim, chegamos no coração dos formulários, a tag que recebe os dados do usuário e permite uma infinidade de coisas serem feitas baseadas nisso. Um formulário HTML é feito de um ou mais inputs. Esses inputs podem ser campos de texto (linha única ou de várias linhas), caixas de seleção, botões, checkboxes ou radio buttons. 
+
++ `<label>`: antes de nos aprofundarmos na tag label, devemos falar da tag mais importante para a acessibilidade de um formulário, que é a tag `<label>`. Ela que vai definir o que o campo vai receber para quem não pode enxergar o campo em si. Nela, deve-se colocar o que a tag input irá receber. A tag label necessita de um atributo "for", que indica a qual input ela pertence. O atributo for recebe o id do inuput ao qual o label pertence pertence. Exemplo: 
+
+~~~html
+    <input id="nome">
+    <label for="nome">Digite o seu nome</label>
+~~~
+    
+  <label for="nome">Digite o seu nome</label>
+  <input id="nome">
+
+  +  A semântica de um `<input>` varia consideravelmente dependendo do valor de seu atributo type. Quando a tag input é colocada sozinha, ela é automaticamente considerada um input do type="text".
+<hr>
+   
+
+### Aprofundando na tag `<input>`:
+
++ A tag input, como falado anteriormente, tem MUITOS tipos aceitáveis, sendo mais específico, 23 tipos.
+
++ Como aqui é apenas uma introdução aos inputs, eu vou explicar somente 4 deles para que seja entendida a ideia. Fica de atividade verificar os demais.
+
++ `<input type="text">`:
+
+  + Talvez o mais comum e importante deles, o input text, como o nome sugere, o input do type="text" é aquele que recebe a informação em formato de texto. É o tipo de input mais primitivo e intuitivo que tem, pois se trata com textos. Ele pode receber alguns outros atributos, como placeholder="", que define o texto que indicará o que deve ser digitado no campo.
+  
+  `<input placeholder="Digite seu nome aqui">`
+
+  <input type="text" placeholder="Digite seu nome aqui">
+    
+  + O placeholder tem uma função semântica importante, mas não substitui a tag `<label>`
+
+  + Mais pra frente, na parte de Javascript, será aprendido como manipular o conteúdo inserido dentro dos campos de formulário. Por enquanto, é importante ter ciência de que o text serve para textos.
+
++ `<input type="number">`: 
+
+  + O type number, como o nome sugere, indica que o input será de um tipo numérico, isso significa que ele só irá aceitar valorer numéricos como inserção. 
+  
+  <input type="number" placeholder="Coloque o número">
+
+  + No input de type number, essas duas setinhas que aparecem quando o mouse passa em cima, servirão de incremento quando clicadas. O valor do incremento ou decremento pode ser definido também, mas não é o foco da aula. Por padrão, ele irá incrementar e decrementar 1. Assim como para textos, é necessária a colocação da tag `<label>` e pode receber o atributo placeholder.
+
++ `<input type="date">`: 
+  + Esse input tem, assim como os anteriores, um papel importante. Dessa vez, ele será o responsável por receber datas. O formato dele também mudará. 
+  + Por padrão, ele terá o "dd/mm/aaaa" e esse pequeno calendário clicável para a seleção de datas nele. Ele não receberá valores de placeholder, mas precisa de uma tag `<label>`.
+
+  <input type="date"> 
+
++ `<input type="checkbox">`: 
+  
+    <input type="checkbox" checked>
+    <input type="checkbox">
+
++ Os inputs do type checkbox são, como o nome sugere, caixas de seleção. Eles, assim como todos os anteriores, precisam da tag label para definir o que representa a marcação deles. Eles têm um atributo único deles, que é o checked. É um atributo booleano que tem como função colocar ele como marcado. Se no HTML ele já estiver "checked", ele já estará marcado por padrão. Assim que o usuário marca o checkbox, ele receberá o atributo checked também. Exemplo:
+
+<fieldset>
+<legend> Seus interesses </legend>
+    <label for="checkbox-1">Futebol</label>
+    <input type="checkbox">
+<br>
+    <label for="checkbox-2">Programação</label>
+    <input type="checkbox" checked>
+<br>
+    <label for="checkbox-3">Jogos</label>
+    <input type="checkbox">
+</fieldset>
+
+<br><br>
+
+~~~html
+<fieldset>
+<legend> Seus interesses </legend>
+    <label for="checkbox-1">Futebol</label>
+    <input type="checkbox">
+<br>
+    <label for="checkbox-2">Programação</label>
+    <input type="checkbox" checked>
+<br>
+    <label for="checkbox-3">Jogos</label>
+    <input type="checkbox">
+</fieldset>
+~~~
+
++ Nesse caso, usei o br para pular linhas, mas lembre-se que você não deve fazer isso e que tudo que tem relação com estilos deve ser feito pelo CSS.
+<hr>
+
+<p>A parte de inputs foi essa, agora vemos para os botões.</p>
+
++ `<button>`:
+
+<center>
+    <button>
+      Botão
+    </button>
+</center>
+
+<br>
+
+  + A tag para criar botões é a tag button. Diferente dos inputs, os botões não necessitam de uma tag label. Os valores para eles são colocados entre a abertura e o fechamento da tag button. Os botões também podem assumir alguns tipos, mas aqui vamos considerar apenas dois.
+
+      + `<button type="button">`: 
+      
+        + Apesar de parecer estranho colocar o tipo botão para uma tag que determina um botão, esse tipo de botão não é o padrão. O tipo padrão é o submit, que veremos mais à frente. De qualquer forma, o botão do type="button" serve como um simples botão que não tem funcionalidade nenhuma, mas que você poderá fazer o que quiser com ele quando aprender eventos no Javascript. 
+
+      + `<button type="submit">`: 
+        + É o tipo padrão de botões, ele serve para enviar um formulário. Ele não vai, efetivamente, enviar o formulário se você não definir um lugar para receber esse formulário e etc. A especificidade desse tipo de botão é que, quando clicado, ele automaticamente recarrega a página como um comportamento padrão.
+
++ Com os aprendizados que tivemos até agora, chegou a hora de a gente montar um formulário simples. Nele, a gente vai pedir o nome, a idade, o email e se a pessoa está ou não satisfeita com o nosso serviço.
+
+~~~html
+  * O primeiro passo, é criarmos a estrutura do formulário.
+
+    <form>
+        <fieldset>
+            <legend> Formulário de feedback </legend>
+        </fieldset>
+    </form>
+
+  * Como foi falado anteriormente, o form serve para indicar todo o formulário e o fieldset e o legend servem para, de maneira acessível a todas as pessoas, mostrar do que se trata aquele campo do formulário.
+~~~
+
+
+<form>
+    <fieldset>
+        <legend> Formulário de feedback </legend>
+    </fieldset>
+</form>
+<hr>
+
+~~~html
+  * O próximo passo é adicionarmos os campos de texto. 
+      PS: existe um campo propriamente para emails, que é o input type="email", mas não falei antes para não tomar muito espaço.
+      Bom, vamos fazer as adições.
+
+    <form>
+        <fieldset>
+            <legend> Formulário de feedback </legend>
+
+            <label for="nome">Seu nome: </label>
+            <input type="text" id="nome">
+        <br>
+            <label for="idade">Sua idade: </label>
+            <input type="number" id="idade">
+        <br>
+            <label for="mail">Seu nome: </label>
+            <input type="email" id="mail">
+        <br>
+            <label for="feedback-positivo">Gostei</label>
+            <input type="checkbox" id="feedback-positivo" checked>
+        <br>
+            <label for="feedback-negativo">Não gostei</label>
+            <input type="checkbox" id="feedback-negativo">
+            </fieldset>
+    </form>
+    
+    * Novamente, não pegue o costume de usar BR, as estilizações devem ser feitas via CSS ;).
+~~~
+<form>
+        <fieldset>
+            <legend> Formulário de feedback </legend>
+            <label for="nome">Seu nome: </label>
+            <input type="text" id="nome">
+    <br>
+            <label for="idade">Sua idade: </label>
+            <input type="number" id="idade">
+    <br>
+            <label for="mail">Seu nome: </label>
+            <input type="email" id="mail">
+    <br>
+            <label for="feedback-positivo">Gostei</label>
+            <input type="checkbox" id="feedback-positivo" checked>
+    <br>
+            <label for="feedback-negativo">Não gostei</label>
+            <input type="checkbox" id="feedback-negativo">
+        </fieldset>
+</form>
+
+<hr>
+
+~~~html
+    * Por último, resta somente o nosso botão para enviar o formulário. Como a ideia é, de fato, enviar o formulário, vamos usar o button do type submit, certo?
+
+    <form>
+        <fieldset>
+            <legend> Formulário de feedback </legend>
+
+            <label for="nome">Seu nome: </label>
+            <input type="text" id="nome">
+        <br>
+            <label for="idade">Sua idade: </label>
+            <input type="number" id="idade">
+        <br>
+            <label for="mail">Seu nome: </label>
+            <input type="email" id="mail">
+        <br>
+            <label for="feedback-positivo">Gostei</label>
+            <input type="checkbox" id="feedback-positivo" checked>
+        <br>
+            <label for="feedback-negativo">Não gostei</label>
+            <input type="checkbox" id="feedback-negativo">
+        
+            <button type="submit">Enviar formulário</button>
+        </fieldset>
+    </form>
+~~~
+
+<form>
+        <fieldset>
+            <legend> Formulário de feedback </legend>
+            <label for="nome">Seu nome: </label>
+            <input type="text" id="nome">
+        <br>
+            <label for="idade">Sua idade: </label>
+            <input type="number" id="idade">
+        <br>
+            <label for="mail">Seu nome: </label>
+            <input type="email" id="mail">
+        <br>
+            <label for="feedback-positivo">Gostei</label>
+            <input type="checkbox" id="feedback-positivo" checked>
+        <br>
+            <label for="feedback-negativo">Não gostei</label>
+            <input type="checkbox" id="feedback-negativo">
+        <br>    
+            <button type="submit">Enviar formulário</button>
+        </fieldset>
+</form>
+
++ E aí está o nosso formulário de feedback! Apesar de parecer estar muito longe da realidade, os formulários são feitos praticamente dessa forma, mas é claro que com alguns detalhes a mais.
+
+<br>
+<center><h1><b>FIM</b></h1></center>
+
+### <b>Pois bem, a parte de HTML chega ao fim por aqui. O conhecimento adquirido pode ter sido um pouco denso se visto em pouco tempo, mas sempre cabe uma revisão. Estar constantemente treinando é muito importante! Revise sempre que possível nesse material e use a documentação da linguagem como uma forte aliada!</b>
