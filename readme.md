@@ -1,4 +1,4 @@
 # Inicio do Repositorio para a monitoria de Fundamentos De programação WEB.
-Contribuintes - Vander & Theo.
+Contributors 2 - Vander & Theo.
 
 ~~ Em Construção
