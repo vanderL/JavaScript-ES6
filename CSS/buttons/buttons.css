@@ -1,0 +1,49 @@
+.button {
+    height: 40px;
+    width: 100px;
+    
+    cursor: pointer;
+  }
+  
+  #button-info {
+    background-color: rgb(12, 12, 60);
+    color: rgb(255, 255, 255);
+    
+    border: none;
+    border-radius: 25px;
+  }
+  
+  #button-info span {
+    font-size: 17px;
+    
+    padding: 0;
+    height: 25px;
+    padding: 0 8px;
+    
+    margin-right: 6px;
+    
+    border-radius: 50%;
+    background: rgba(12, 12, 60);
+    border: 2px solid rgb(255, 255, 255);
+  }
+  
+  #button-delete {
+    background-color: rgb(255, 255, 255);
+    border: 2px solid #e2725b;
+    
+    border-radius: 5px;
+    
+    color: #e2725b;
+  }
+  
+  #button-delete span {
+    font-size: 17px;
+    
+    height: 25px;
+    padding: 0 6px !important;
+    
+    margin-right: 6px;
+    
+    border-radius: 50%;
+    border: 2px solid #e2725b;
+  }
