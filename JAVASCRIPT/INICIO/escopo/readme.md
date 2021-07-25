@@ -11,7 +11,7 @@ console.log(carro); // Erro, carro is not defined
 ```
 >Escopo evita o conflito entre nomes.
 
-#VARIÁVEL GLOBAL (ERRO)
+# VARIÁVEL GLOBAL (ERRO)
 Declarar variáveis sem a palavra chave var, const ou let, cria uma variável que pode ser acessar em qualquer escopo (global). Isso é um erro.
 ```
 function mostrarCarro() {
