@@ -10,6 +10,7 @@ window.innerHeight; // retorna a altura do browser
 >Ao inspecionar elemento com o Chrome, você está vendo a representação oficial do DOM.
 
 # DOM
+![image](https://user-images.githubusercontent.com/12676148/127171644-ef039fb6-67e7-4afe-8f46-23204ca94ce5.png)
 
 # WINDOW E DOCUMENT
 São os objetos principais do DOM, boa parte da manipulação é feita através dos seus métodos e propriedades.
