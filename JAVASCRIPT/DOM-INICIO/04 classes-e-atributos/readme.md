@@ -1,37 +1,48 @@
-# DOCUMENT OBJECT MODEL (DOM)
-É uma interface que representa documentos HTML e XML através de objetos. Com ela é possível manipular a estrutura, estilo e conteúdo destes documentos.
+# CLASSLIST
+Retorna uma lista com as classes do elemento. Permite adicionar, remover e verificar se contém.
 ```
-console.log(window);
-// window é o objeto global do browser
-// possui diferentes métodos e propriedades
+const menu = document.querySelector('.menu');
 
-window.innerHeight; // retorna a altura do browser
+menu.className; // string
+menu.classList; // lista de classes
+menu.classList.add('ativo');
+menu.classList.add('ativo', 'mobile'); // duas classes
+menu.classList.remove('ativo');
+menu.classList.toggle('ativo'); // adiciona/remove a classe
+menu.classList.contains('ativo'); // true ou false
+menu.classList.replace('ativo', 'inativo');
 ```
->Ao inspecionar elemento com o Chrome, você está vendo a representação oficial do DOM.
-
-# DOM
-
-# WINDOW E DOCUMENT
-São os objetos principais do DOM, boa parte da manipulação é feita através dos seus métodos e propriedades.
+# ATTRIBUTES
+Retorna uma array-like com os atributos do elemento.
 ```
-window.alert('Isso é um alerta');
-alert('Isso é um alerta'); // Funciona
+const animais = document.querySelector('.animais');
 
-document.querySelector('h1'); // Seleciona o primeiro h1
-document.body; // Retorna o body
+animais.attributes; // retorna todos os atributos
+animais.attributes[0]; // retorna o primeiro atributo
 ```
->window é o objeto global, por isso não precisamos chamar ele na frente dos seus métodos e propriedades.
-
-# NODE
-Toda tag html é representada pelo objeto Element e por isso herda os seus métodos e propriedades. Element é um tipo de objeto Node.
+# GETATTRIBUTE E SETATTRIBUTE
+Métodos que retornam ou definem de acordo com o atributo selecionado
 ```
-const titulo = document.querySelector('h1');
+const img = document.querySelector('img');
 
-titulo.innerText; // retorna o texto;
-titulo.classList; // retorna as classes;
-titulo.id; // retorna o id;
-titulo.offsetHeight; // retorna a altura do elemento;
+img.getAttribute('src'); // valor do src
+img.setAttribute('alt', 'Texto Alternativo'); // muda o alt
+img.hasAttribute('id'); // true / false
+img.removeAttribute('alt'); // remove o alt
 
-titulo.addEventListener('click', callback);
-// ativa a função callback ao click no titulo
+img.hasAttributes(); // true / false se tem algum atributo
 ```
+>É muito comum métodos de get e set;
+
+# READ ONLY VS WRITABLE
+Existem propriedades que não permitem a mudança de seus valores, essas são considerados Read Only, ou seja, apenas leitura.
+```
+const animais = document.querySelector('.animais');
+
+animais.className; // string com o nome das classes
+animais.className = 'azul'; // substitui completamente a string
+animais.className += ' vermelho'; // adiciona vermelho à string
+
+animais.attributes = 'class="ativo"'; // não funciona, read-only
+```
+>Lembre-se que podemos modificar o valor de uma propriedade **objeto.propriedade = ''**

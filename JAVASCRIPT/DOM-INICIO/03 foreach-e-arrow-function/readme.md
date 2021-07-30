@@ -1,37 +1,81 @@
-# DOCUMENT OBJECT MODEL (DOM)
-É uma interface que representa documentos HTML e XML através de objetos. Com ela é possível manipular a estrutura, estilo e conteúdo destes documentos.
+# FOREACH
+Constantemente vamos selecionar uma lista de itens do dom. A melhor forma para interagirmos com os mesmos é utilizando o método forEach.
 ```
-console.log(window);
-// window é o objeto global do browser
-// possui diferentes métodos e propriedades
+const imgs = document.querySelectorAll('img');
 
-window.innerHeight; // retorna a altura do browser
+imgs.forEach(function(item){
+  console.log(item);
+});
 ```
->Ao inspecionar elemento com o Chrome, você está vendo a representação oficial do DOM.
 
-# DOM
-
-# WINDOW E DOCUMENT
-São os objetos principais do DOM, boa parte da manipulação é feita através dos seus métodos e propriedades.
+# PARÂMETROS DO FOREACH
+O primeiro parâmetro é o callback, ou seja, a função que será ativada a cada item. Esse função pode receber três parâmetros: valorAtual, index e array;
 ```
-window.alert('Isso é um alerta');
-alert('Isso é um alerta'); // Funciona
+const imgs = document.querySelectorAll('img');
 
-document.querySelector('h1'); // Seleciona o primeiro h1
-document.body; // Retorna o body
+imgs.forEach(function(valorAtual, index, array){
+  console.log(item); // o item atual no loop
+  console.log(index); // o número do index
+  console.log(array); // a Array completa
+});
 ```
->window é o objeto global, por isso não precisamos chamar ele na frente dos seus métodos e propriedades.
 
-# NODE
-Toda tag html é representada pelo objeto Element e por isso herda os seus métodos e propriedades. Element é um tipo de objeto Node.
+# FOREACH E ARRAY
+forEach é um método de Array, alguns objetos array-like possuem este método. Caso não possua, o ideal é transformá-los em uma array.
+
 ```
-const titulo = document.querySelector('h1');
+const titulos = document.getElementsByClassName('titulo');
+const titulosArray = Array.from(titulos);
 
-titulo.innerText; // retorna o texto;
-titulo.classList; // retorna as classes;
-titulo.id; // retorna o id;
-titulo.offsetHeight; // retorna a altura do elemento;
-
-titulo.addEventListener('click', callback);
-// ativa a função callback ao click no titulo
+titulosArray.forEach(function(item){
+  console.log(item);
+});
 ```
+
+# ARROW FUNCTION
+Sintaxe curta em relação a function expression. Basta remover a palavra chave function e adicionar a fat arrow => após os argumentos.
+
+```
+const imgs = document.querySelectorAll('img');
+
+imgs.forEach((item) => {
+  console.log(item);
+});
+```
+
+# ARGUMENTOS E PARÊNTESES
+```
+const imgs = document.querySelectorAll('img');
+
+// argumento único não precisa de parênteses
+imgs.forEach(item => {
+  console.log(item);
+});
+
+// multiplos argumentos precisam de parênteses
+imgs.forEach((item, index) => {
+  console.log(item, index);
+});
+
+// sem argumentos precisa dos parênteses, mesmo vazio
+let i = 0;
+imgs.forEach(() => {
+  console.log(i++);
+});
+```
+
+>É melhor utilizar os parênteses
+
+# RETURN
+É possível omitir as chaves **{}** para uma função que retorna uma linha.
+```
+const imgs = document.querySelectorAll('img');
+
+imgs.forEach(item => 
+  console.log(item)
+);
+
+imgs.forEach(item => console.log(item));
+```
+
+>Não é permitido fechar a linha com ;
