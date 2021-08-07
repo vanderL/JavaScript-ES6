@@ -1,37 +1,74 @@
-# DOCUMENT OBJECT MODEL (DOM)
-É uma interface que representa documentos HTML e XML através de objetos. Com ela é possível manipular a estrutura, estilo e conteúdo destes documentos.
+# ADICIONAR CLASSES PARA MANIPULAÇÃO
+A ideia de navegação por tabs, é ter uma lista de itens que controla a visualização de uma lista de conteúdo. Cada item da lista possui um conteúdo relacionado ao mesmo.
 ```
-console.log(window);
-// window é o objeto global do browser
-// possui diferentes métodos e propriedades
-
-window.innerHeight; // retorna a altura do browser
+<!-- Primeiro, adicionar classes que irão
+facilitar a manipulação dos elementos -->
+<ul class="animais-lista js-tabmenu">
+  ...
+</ul>
+<div class="animais-descricao js-tabcontent">
+  ...
+</div>
 ```
->Ao inspecionar elemento com o Chrome, você está vendo a representação oficial do DOM.
-
-# DOM
-
-# WINDOW E DOCUMENT
-São os objetos principais do DOM, boa parte da manipulação é feita através dos seus métodos e propriedades.
+# SELECIONAR OS ITENS
 ```
-window.alert('Isso é um alerta');
-alert('Isso é um alerta'); // Funciona
-
-document.querySelector('h1'); // Seleciona o primeiro h1
-document.body; // Retorna o body
+const tabMenu = document.querySelectorAll('.js-tabmenu li');
+const tabContent = document.querySelectorAll('.js-tabmenu section');
 ```
->window é o objeto global, por isso não precisamos chamar ele na frente dos seus métodos e propriedades.
+# FUNÇÃO CALLBACK
+Recebe index como parâmetro para ativar a tab. Sempre que ativar, remove a classe ativo de todos os outros elementos.
 
-# NODE
-Toda tag html é representada pelo objeto Element e por isso herda os seus métodos e propriedades. Element é um tipo de objeto Node.
 ```
-const titulo = document.querySelector('h1');
-
-titulo.innerText; // retorna o texto;
-titulo.classList; // retorna as classes;
-titulo.id; // retorna o id;
-titulo.offsetHeight; // retorna a altura do elemento;
-
-titulo.addEventListener('click', callback);
-// ativa a função callback ao click no titulo
+function activeTab(index) {
+  tabContent.forEach((content) => {
+    content.classList.remove('ativo');
+  });
+  tabContent[index].classList.add('ativo');
+}
 ```
+# ADICIONAR O EVENTO
+Neste caso precisamos passar antes a fução anônima no callback, para podermos passar o index como argumento de activeTab
+```
+tabMenu.forEach((itemMenu, index) => {
+  itemMenu.addEventListener('click', () => {
+    activeTab(index);
+  });
+});
+```
+# ASSIM QUE CARREGAR
+Adicionar a classe ativo ao primeiro elemento e adicionar a classe js ao html. Assim identificamos se o JavaScript está habilitado ou não.
+```
+<!-- No head do borwser -->
+<script>document.documentElement.className += ' js';</script>
+```
+```
+// Verificar se existe elemento em tabContent e tabMenu
+if(tabContent.length && tabMenu.length) {
+  tabContent[0].classList.add('ativo');
+  ...
+}
+```
+# ANIMAÇÃO COM CSS
+Animação simples com css, sai de display none para display block.
+```
+.js .js-tabcontent section {
+  display: none;
+}
+
+.js-tabcontent section.ativo {
+  display: block !important;
+  animation: show .5s forwards;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: translate3d(-30px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0px, 0, 0);
+  }
+}
+```
+>Lembre-se, o display none remove o texto até dos leitores de tela (acessibilidade)
