@@ -12,4 +12,4 @@ const h2Interno = document.querySelector('.animais-descricao h2')
 console.log(h2Interno)
 // Selecione o último p do site
 const paragrafos = document.querySelectorAll('p');
-console.log(paragrafos[paragrafos.length - 1])
+console.log(paragrafos[--paragrafos.length])
